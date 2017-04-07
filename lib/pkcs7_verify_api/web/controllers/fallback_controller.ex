@@ -21,16 +21,4 @@ defmodule PKCS7Verify.Web.FallbackController do
     |> put_status(:not_found)
     |> render(EView.Views.Error, :"404")
   end
-
-  def call(conn, {:error, %Ecto.Changeset{} = changeset}) do
-    conn
-    |> put_status(:unprocessable_entity)
-    |> render(EView.Views.ValidationError, :"422", changeset)
-  end
-
-  def call(conn, %Ecto.Changeset{valid?: false} = changeset) do
-    conn
-    |> put_status(:unprocessable_entity)
-    |> render(EView.Views.ValidationError, :"422", changeset)
-  end
 end
