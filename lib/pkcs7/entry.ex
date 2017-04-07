@@ -5,9 +5,11 @@ defmodule PKCS7.Entry do
             certificates: [],   # %PKCS7.Entry.Certificate{}
             signatures: []      # %PKCS7.Entry.Signature{}
 
-  def from_record({:ContentInfo, entry_id, entry_data}) do
-    %__MODULE__{id: entry_id}
-    |> put_entry_data(entry_data)
+  def from_record({:ContentInfo, id, data}) do
+    %__MODULE__{
+      id: PKCS7.oid_to_atom(id)
+    }
+    |> put_entry_data(data)
   end
 
   defp put_entry_data(entry, {:SignedData, :sdVer1, digests_set, content, cert_set, :asn1_NOVALUE, signs_set}) do

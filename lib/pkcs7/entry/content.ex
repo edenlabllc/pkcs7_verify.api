@@ -1,8 +1,11 @@
 defmodule PKCS7.Entry.Content do
-  defstruct id: nil,   # ?
+  defstruct type: nil,   # ?
             value: nil # binary
 
-  def from_record({:ContentInfo, id, value}) do
-    %__MODULE__{id: id, value: value}
+  def from_record({:ContentInfo, type, value}) do
+    %__MODULE__{
+      type: PKCS7.Entry.Signature.Attribute.value(type),
+      value: value
+    }
   end
 end

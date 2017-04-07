@@ -4,7 +4,7 @@ defmodule PKCS7.Entry.Signature.DigestEncryptionAlgorithmIdentifier do
 
   def from_record({:DigestEncryptionAlgorithmIdentifier, algorithm, parameters}) do
     %__MODULE__{
-      algorithm: PKCS7.Shared.AlgorithmIdentifier.oid_to_atom(algorithm),
+      algorithm: PKCS7.oid_to_atom(algorithm),
       parameters: parameters
     }
   end

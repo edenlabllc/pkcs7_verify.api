@@ -7,7 +7,7 @@ defmodule PKCS7VerifyTest do
     {:ok, p7} = File.read("test/fixtures/signed.p7")
 
     PKCS7.decode(p7)
-    # |> Enum.map(&PKCS7.verify_signature/1)
-    |> IO.inspect
+    |> Enum.map(&PKCS7.verify_signature/1)
+    # |> IO.inspect
   end
 end
