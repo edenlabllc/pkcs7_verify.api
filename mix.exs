@@ -24,7 +24,8 @@ defmodule PKCS7Verify.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [extra_applications: [:logger, :confex, :runtime_tools, :cowboy, :httpoison,
-                          :poison, :phoenix, :multiverse, :eview],
+                          :poison, :phoenix, :multiverse, :eview,
+                          :asn1, :crypto, :public_key],
      mod: {PKCS7Verify, []}]
   end
 
